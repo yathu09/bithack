@@ -1,6 +1,6 @@
 import sqlite3
 
-#to create the SQLite database
+#to create the sqlite database
 def create_database():
     conn = sqlite3.connect('expense_tracker.db')  
     cursor = conn.cursor()
@@ -33,7 +33,7 @@ def create_database():
         ('housekeeping', 1000)  
     ]
 
-    # Insert the budget values only if they don't already exist (to keep them constant)
+    #for const budget amounts
     cursor.executemany('INSERT OR IGNORE INTO budget (category, amount) VALUES (?, ?)', budget_data)
     
     conn.commit() 
@@ -66,7 +66,7 @@ def get_budget(category):
     result = cursor.fetchone()
     conn.close()
 
-    # Ensure the result is returned as a float
+    #for float result
     return float(result[0]) if result else 0.0
 
 #to calculate remaining budget
